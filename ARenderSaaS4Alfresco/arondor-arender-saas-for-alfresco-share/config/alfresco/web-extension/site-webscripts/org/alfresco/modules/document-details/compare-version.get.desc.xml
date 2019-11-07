@@ -1,0 +1,5 @@
+<webscript>
+   <shortname>Compare version</shortname>
+   <description>Compare a document version with another version</description>
+   <url>/modules/document-details/compare-version</url>
+</webscript>

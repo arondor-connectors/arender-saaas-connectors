@@ -1,0 +1,9 @@
+<webscript>
+  <shortname>hasPDFRendition</shortname>
+  <description>Checks if a given node has a pdf rendition</description>
+  <url>/slingshot/doclib/node/{store_type}/{store_id}/{id}/preview</url>
+  <format default="json">argument</format>
+  <authentication>user</authentication>
+  <transaction>required</transaction>
+  <lifecycle>internal</lifecycle>
+</webscript>

@@ -1,0 +1,27 @@
+<extension>
+	<modules>
+		<module>
+			<id>Arender compare documents</id>
+			<version>1.0</version>
+			<auto-deploy>true</auto-deploy>
+			<configurations>
+				<config evaluator="string-compare" condition="DocumentLibrary">
+					<multi-select>
+						<action type="action-link" id="onCompareDocuments" asset="document" label="menu.selected-items.compare" icon="compare"/>
+					</multi-select>
+				</config>
+			</configurations>
+			<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.documentlibrary</targetPackageRoot>
+				<sourcePackageRoot>com.arondor.customization.arender-compare</sourcePackageRoot>
+				<dependencies>
+			        <js>/res/arondor/components/compare/custom-doclib-actions.js</js>
+			        <js>/res/modules/document-details/compare-version.js</js>
+			        <css>/res/arondor/components/compare/custom-doclib-actions.css</css>
+			    </dependencies>
+			</customization>
+			</customizations>
+		</module>
+	</modules>
+</extension>

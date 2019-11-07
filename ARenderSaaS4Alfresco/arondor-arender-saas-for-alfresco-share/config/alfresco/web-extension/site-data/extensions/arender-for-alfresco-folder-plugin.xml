@@ -1,0 +1,28 @@
+<extension>
+    <modules>
+        <module>
+            <id>Arender open folder</id>
+            <version>1.0</version>
+            <auto-deploy>true</auto-deploy>
+            <configurations>
+                <config evaluator="string-compare" condition="DocumentLibrary">
+                    <multi-select>
+                        <action type="action-link" id="onOpenFolder" asset="folder" label="menu.selected-items.folder"
+                                icon="folder"/>
+                    </multi-select>
+                </config>
+            </configurations>
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.components.documentlibrary</targetPackageRoot>
+                    <sourcePackageRoot>com.arondor.customization.arender-folder</sourcePackageRoot>
+                    <dependencies>
+                        <js>/res/arondor/components/folder/custom-folder-doclib-actions.js</js>
+                        <js>/res/modules/document-details/open-folder.js</js>
+                        <css>/res/arondor/components/folder/custom-folder-doclib-actions.css</css>
+                    </dependencies>
+                </customization>
+            </customizations>
+        </module>
+    </modules>
+</extension>

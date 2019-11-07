@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>arondor-arender-saas-for-alfresco-platform</artifactId>
+	<name>Alfresco Platform/Repository JAR Module for Tiramisu</name>
+	<description>Platform/Repo JAR Module (to be included in the alfresco.war) - part of AIO - SDK 3
+    </description>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>com.arondor.arender</groupId>
+		<artifactId>arondor-arender-saas-for-alfresco</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<!-- Alfresco Maven Plugin version to use -->
+		<alfresco.sdk.version>3.0.1</alfresco.sdk.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Properties used in dependency declarations, you don't need to change 
+			these -->
+		<alfresco.groupId>org.alfresco</alfresco.groupId>
+
+		<!-- Alfresco Platform and Share webapp versions, these are the original 
+			Alfresco webapps that will be customized and then deployed and run by the 
+			tomcat maven plugin when executing for example $ mvn clean install alfresco:run -->
+		<alfresco.platform.version>5.2.2</alfresco.platform.version>
+		<alfresco.share.version>5.2.2</alfresco.share.version>
+
+		<!-- Default is to run with a Community edition, change to 'enterprise' 
+			if using Enterprise edition -->
+		<maven.alfresco.edition>enterprise</maven.alfresco.edition>
+
+		<!-- Alfresco Surf version, if you change Share version you might need 
+			to change Surf version -->
+		<alfresco.surf.version>6.11</alfresco.surf.version>
+
+		<!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
+		<jrebel.version>1.1.6</jrebel.version>
+
+		<!-- Environment to use, Alfresco Maven Plugin will copy alfresco-global-*.properties 
+			files from this directory, such as src/test/properties/local -->
+		<env>local</env>
+
+		<!-- Compile with Java 7, default is 5 -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- The main Alfresco Repo dependency for compiling Java code in src/main/java -->
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>alfresco-repository</artifactId>
+			<version>7.9</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.5</version>
+		</dependency>
+
+
+		<!-- Bring in Spring Context so we can use ApplicationContext, ApplicationContextAware 
+			etc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.2.17.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Bring in Alfresco RAD so we get access to AlfrescoTestRunner classes -->
+		<dependency>
+			<groupId>org.alfresco.maven</groupId>
+			<artifactId>alfresco-rad</artifactId>
+			<version>${alfresco.sdk.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+
+		</dependencies>
+	</dependencyManagement>
+	<repositories>
+		<repository>
+			<id>alfresco-public</id>
+			<url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+		</repository>
+		<repository>
+			<id>alfresco-public-snapshots</id>
+			<url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</repository>
+		<!-- Alfresco Enterprise Edition Artifacts, put username/pwd for server 
+			in settings.xml -->
+		<repository>
+			<id>alfresco-private-repository</id>
+			<url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>alfresco-plugin-public</id>
+			<url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>alfresco-plugin-public-snapshots</id>
+			<url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<finalName>${project.artifactId}-${project.version}</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- bind to the packaging phase -->
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+	</build>
+
+</project>

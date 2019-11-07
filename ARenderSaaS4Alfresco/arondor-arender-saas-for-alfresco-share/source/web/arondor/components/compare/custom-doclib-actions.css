@@ -1,0 +1,11 @@
+.toolbar .onCompareDocuments {
+	background-image:url(../../../components/documentlibrary/actions/compare-16.png);
+}
+
+.document-versions .actions a.compare{
+		background-image:url(../../../components/documentlibrary/actions/compare-16.png);
+}
+
+.document-versions .actions{
+	    width: 6em;
+}

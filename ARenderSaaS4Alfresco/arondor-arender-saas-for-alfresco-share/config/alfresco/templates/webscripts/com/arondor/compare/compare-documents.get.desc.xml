@@ -1,0 +1,17 @@
+<webscript>
+  <shortname>compare-documents</shortname>
+  <description>compare two documents using their noderefs</description>
+   <url>/arender/doclib/action/compare</url>
+   <format default="html">any</format>
+   <authentication>user</authentication>
+   <family>Arender</family>
+   <cache>
+   	<never>true</never>
+   </cache>
+   <args>
+   	<arg>
+   		<name>noderefs</name>
+   		<description>a comma separated list of noderefs</description>
+   	</arg>
+   </args>
+</webscript>

@@ -1,0 +1,13 @@
+<webscript>
+
+  <shortname>user</shortname>
+
+  <url>/slingshot/doclib/action/user</url>
+
+  <format default="json"/>
+
+  <authentication>user</authentication>
+
+<transaction allow="readonly">required</transaction>
+
+</webscript>

@@ -1,0 +1,17 @@
+<webscript>
+    <shortname>open-folder</shortname>
+    <description>open a folder in alfresco using its nodeRef</description>
+    <url>/arender/doclib/action/folder</url>
+    <format default="html">any</format>
+    <authentication>user</authentication>
+    <family>Arender</family>
+    <cache>
+        <never>true</never>
+    </cache>
+    <args>
+        <arg>
+            <name>folderRef</name>
+            <description>a nodeRef of a folder</description>
+        </arg>
+    </args>
+</webscript>

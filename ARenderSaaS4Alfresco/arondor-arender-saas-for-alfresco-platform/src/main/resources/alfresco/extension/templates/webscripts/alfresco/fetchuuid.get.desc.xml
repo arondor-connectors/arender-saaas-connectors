@@ -1,0 +1,7 @@
+<webscript>
+    <shortname>Fetch ARender UUID sample webscript</shortname>
+    <description>Hands back a temporary ARender uuid from noderef</description>
+    <url>/slingshot/doclib/action/arenderUpload?nodeRef={nodeRef?}</url>
+    <authentication>user</authentication>
+    <format default="json">extension</format>
+</webscript>
